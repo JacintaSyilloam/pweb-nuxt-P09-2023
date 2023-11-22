@@ -9,14 +9,16 @@ import { buildConfig } from 'payload/config'
 import Users from './collections/Users'
 import Media from './collections/Media'
 import Blogs from './collections/Blogs'
+import Log from './collections/Log'
 
 export default buildConfig({
+  cors: '*',
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Media, Blogs],
+  collections: [Users, Media, Blogs, Log],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
