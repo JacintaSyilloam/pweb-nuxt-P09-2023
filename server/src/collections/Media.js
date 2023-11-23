@@ -57,6 +57,16 @@ const Media = {
               timestamp: new Date(),
             },
           });
+        } else if (args.operation == "delete") {
+          payload.create({
+            collection: "log",
+            data: {
+              type: "Media",
+              name: args.result.url,
+              action: "Deleted",
+              timestamp: new Date(),
+            },
+          });
         }
       },
     ],

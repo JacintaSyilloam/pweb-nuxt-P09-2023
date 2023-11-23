@@ -3,9 +3,9 @@
 const Log = {
     slug: 'log',
     access: {
-        create: () => false,
+        create: () => true,
         read: () => true,
-        update: () => false,
+        update: () => true,
         delete: () => true,
     },
     fields: [
@@ -23,6 +23,7 @@ const Log = {
         },
         {
             name: 'action',
+            label: 'Action',
             type: 'text',
             required: true,
         },
