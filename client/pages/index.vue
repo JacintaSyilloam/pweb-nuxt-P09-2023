@@ -1,8 +1,13 @@
 <template>
-    <main>
-        <div class="text-center flex flex-col gap-1 items-center justify-center h-screen">
-            <h1 class="text-sky-500 font-bold text-3xl">Hello World!</h1>
-            <p class="text-orange-500 text-lg underline">TailwindCSS Init Successfully!</p>
-        </div>
-    </main>
+  <main>
+    <Navbar />
+    <div
+      class="flex h-screen flex-col items-center justify-center gap-1 text-center"
+    >
+      <h1 class="text-3xl font-bold text-sky-500">Hello World!</h1>
+      <p class="text-lg text-orange-500 underline">
+        TailwindCSS Init Successfully!
+      </p>
+    </div>
+  </main>
 </template>
