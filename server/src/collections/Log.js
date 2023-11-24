@@ -3,9 +3,9 @@
 const Log = {
     slug: 'log',
     access: {
-        create: () => true,
+        create: () => false,
         read: () => true,
-        update: () => true,
+        update: () => false,
         delete: () => true,
     },
     fields: [

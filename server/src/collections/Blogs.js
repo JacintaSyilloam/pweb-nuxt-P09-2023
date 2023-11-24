@@ -26,7 +26,7 @@ const Blogs = {
     },
     {
       name: "content",
-      type: "text",
+      type: "textarea",
       label: "Content",
     },
     {
@@ -69,17 +69,18 @@ const Blogs = {
               timestamp: new Date(),
             },
           });
-        } else if (args.operation == "delete") {
-          payload.create({
-            collection: "log",
-            data: {
-              type: "Blog",
-              name: args.result.title,
-              action: "Deleted",
-              timestamp: new Date(),
-            },
-          });
         }
+        // } else if (args.operation == "delete") {
+        //   payload.create({
+        //     collection: "log",
+        //     data: {
+        //       type: "Blog",
+        //       name: args.result.title,
+        //       action: "Deleted",
+        //       timestamp: new Date(),
+        //     },
+        //   });
+        // }
       },
     ],
   },
