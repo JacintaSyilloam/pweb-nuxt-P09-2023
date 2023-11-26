@@ -15,4 +15,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  build: {
+    transpile: ["@fortawesome/vue-fontawesome"],
+  },
 });

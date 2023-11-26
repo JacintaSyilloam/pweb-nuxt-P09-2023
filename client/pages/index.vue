@@ -10,7 +10,7 @@
         category="Space"
       />
 
-      <div class="pb-fluid-gap-section flex flex-col gap-5">
+      <div class="flex flex-col gap-5 pb-fluid-gap-section">
         <!-- Header -->
         <div class="flex flex-row items-center justify-between">
           <h1
@@ -20,7 +20,7 @@
           </h1>
           <div class="flex cursor-pointer flex-row items-center gap-2">
             <h2
-              class="font-roboto text-fluid-header-title font-semibold leading-tight text-green-500"
+              class="text-fluid-header-title font-roboto font-semibold leading-tight text-green-500"
             >
               <NuxtLink to="/blog">See all</NuxtLink>
             </h2>
@@ -69,3 +69,23 @@
     </section>
   </main>
 </template>
+
+<script setup>
+const { data, error } = useAsyncData(async () => {
+  try {
+    const response = await fetch("http://localhost:8000/api/blogs");
+    const responseData = await response.json();
+    const document = responseData.docs;
+
+    document.forEach((document) => console.log(document.title));
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+  return {
+    data,
+    error,
+  };
+});
+</script>

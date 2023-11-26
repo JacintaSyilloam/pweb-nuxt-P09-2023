@@ -2,7 +2,7 @@
   <main class="h-screen bg-neutral-900">
     <Navbar />
     <section class="mx-32 pt-36">
-      <h1 class="font-lora pb-8 text-4xl font-extrabold text-green-500">
+      <h1 class="pb-8 font-lora text-4xl font-extrabold text-green-500">
         Anggota Kelompok P09 :
       </h1>
       <ul class="font-roboto text-2xl font-medium text-slate-300">

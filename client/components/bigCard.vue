@@ -1,7 +1,7 @@
 <template>
   <!-- Header News -->
   <div
-    class="pt-fluid-headerCard pb-fluid-gap-section flex flex-col items-center justify-between gap-6 transition-all xl:flex-row xl:gap-28"
+    class="flex flex-col items-center justify-between gap-6 pb-fluid-gap-section pt-fluid-headerCard transition-all xl:flex-row xl:gap-28"
   >
     <!-- Image -->
     <img
@@ -16,30 +16,30 @@
         <!-- Header Text -->
         <div class="flex flex-row items-center gap-3">
           <h2
-            class="text-fluid-headerCard-title font-roboto font-medium leading-tight text-neutral-400"
+            class="font-roboto text-fluid-headerCard-title font-medium leading-tight text-neutral-400"
           >
             {{ author }}
           </h2>
           <font-awesome-icon
-            icon="fa-solid fa-circle"
+            icon="circle"
             class="text-fluid-headerCard-dot text-neutral-400"
           />
           <h2
-            class="text-fluid-headerCard-title font-roboto font-medium leading-tight text-neutral-400"
+            class="font-roboto text-fluid-headerCard-title font-medium leading-tight text-neutral-400"
           >
             {{ publishDate }}
           </h2>
         </div>
 
         <h1
-          class="pb-clamp font-lora text-fluid-nav-logo line-clamp-3 font-semibold leading-tight text-green-500"
+          class="line-clamp-3 pb-clamp font-lora text-fluid-nav-logo font-semibold leading-tight text-green-500"
         >
           {{ title }}
         </h1>
       </div>
 
       <p
-        class="text-fluid-headerCard-description font-roboto line-clamp-4 max-w-full leading-normal text-neutral-300"
+        class="line-clamp-4 max-w-full font-roboto text-fluid-headerCard-description leading-normal text-neutral-300"
       >
         {{ description }}
       </p>
