@@ -18,17 +18,7 @@
           >
             Latest News
           </h1>
-          <div class="flex cursor-pointer flex-row items-center gap-2">
-            <h2
-              class="text-fluid-header-title font-roboto font-semibold leading-tight text-green-500"
-            >
-              <NuxtLink to="/blog">See all</NuxtLink>
-            </h2>
-            <font-awesome-icon
-              icon="fa-solid fa-arrow-right"
-              class="text-fluid-header-title font-semibold leading-tight text-green-500"
-            />
-          </div>
+          <redirectModal />
         </div>
 
         <div
@@ -71,21 +61,21 @@
 </template>
 
 <script setup>
-const { data, error } = useAsyncData(async () => {
-  try {
-    const response = await fetch("http://localhost:8000/api/blogs");
-    const responseData = await response.json();
-    const document = responseData.docs;
+// const { data, error } = useAsyncData(async () => {
+//   try {
+//     const response = await fetch("http://localhost:8000/api/blogs");
+//     const responseData = await response.json();
+//     const document = responseData.docs;
 
-    document.forEach((document) => console.log(document.title));
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
+//     document.forEach((document) => console.log(document.title));
+//   } catch (err) {
+//     console.error(err);
+//     // throw err;
+//   }
 
-  return {
-    data,
-    error,
-  };
-});
+//   return {
+//     data,
+//     error,
+//   };
+// });
 </script>

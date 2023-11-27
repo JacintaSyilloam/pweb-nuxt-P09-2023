@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/css/main.css", "@fortawesome/fontawesome-svg-core/styles.css"],
-  modules: ["@nuxtjs/google-fonts"],
+  modules: ["@nuxtjs/google-fonts", "nuxt-headlessui"],
   googleFonts: {
     families: {
       Roboto: [400, 500, 600, 700],
