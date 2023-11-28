@@ -23,6 +23,11 @@ const Media = {
       type: "text",
       label: "Media URL",
     },
+    {
+      name: "alt",
+      type: "text",
+      label: "Media Alt",
+    }
   ],
   hooks: {
     afterOperation: [
