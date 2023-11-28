@@ -1,6 +1,6 @@
 <template>
   <main class="bg-neutral-900 pt-16">
-    <section class="mx-fluid-x duration-500">
+    <section class="mx-fluid-x">
       <bigCard
         imageUrl="https://techcrunch.com/wp-content/uploads/2019/12/Rocket-Lab-Mahia-Peninsula.jpeg?w=1390&crop=1"
         author="Aria Alamalhodaei"
