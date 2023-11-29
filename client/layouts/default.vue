@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav
-      class="fixed w-full items-center justify-center border-b border-neutral-700 bg-neutral-900"
+      class="fixed z-50 w-full items-center justify-center border-b border-neutral-700 bg-neutral-900"
     >
       <div class="mx-fluid-nav flex flex-wrap items-center justify-between p-2">
         <h1

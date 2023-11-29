@@ -1,6 +1,6 @@
 <template>
-  <main class="h-full  bg-neutral-900 pt-24">
-    <section class="mx-fluid-x duartion-500">
+  <main class="h-full bg-neutral-900 pt-24">
+    <section class="duartion-500 mx-fluid-x">
       <div class="pb-8">
         <h1
           class="font-roboto text-fluid-landingPage-header font-semibold leading-none text-neutral-200"
@@ -10,7 +10,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 pb-8"
+        class="grid grid-cols-1 gap-10 pb-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4"
       >
         <smallCard
           imageUrl="https://techcrunch.com/wp-content/uploads/2023/06/pi-inflection.jpg?w=1390&crop=1"
@@ -44,7 +44,7 @@
         />
       </div>
       <div
-        class="grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 pb-8"
+        class="grid grid-cols-1 gap-10 pb-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4"
       >
         <smallCard
           imageUrl="https://techcrunch.com/wp-content/uploads/2023/06/pi-inflection.jpg?w=1390&crop=1"
@@ -80,3 +80,10 @@
     </section>
   </main>
 </template>
+
+<script setup>
+useHead({
+  title: "Blog",
+  meta: [{ name: "description", content: "Blog Page" }],
+});
+</script>

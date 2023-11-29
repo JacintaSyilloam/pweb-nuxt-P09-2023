@@ -1,14 +1,41 @@
 <template>
   <main class="bg-neutral-900 pt-16">
     <section class="mx-fluid-x">
-      <bigCard
-        imageUrl="https://techcrunch.com/wp-content/uploads/2019/12/Rocket-Lab-Mahia-Peninsula.jpeg?w=1390&crop=1"
-        author="Aria Alamalhodaei"
-        publishDate="June 23, 2023"
-        title="Rocket Lab doubles down on marine booster recovery with next Electron launch"
-        description="Rocket Lab's next Electron mission will include another marine recovery attempt of the rocket's booster, the latest step by the company to advance its reusability program."
-        category="Space"
-      />
+      <Swiper
+        :modules="[SwiperAutoplay]"
+        :slides-per-view="1"
+        :loop="true"
+        :autoplay="{ delay: 2000 }"
+      >
+        <SwiperSlide>
+          <bigCard
+            imageUrl="https://techcrunch.com/wp-content/uploads/2019/12/Rocket-Lab-Mahia-Peninsula.jpeg?w=1390&crop=1"
+            author="Aria Alamalhodaei"
+            publishDate="June 23, 2023"
+            title="Rocket Lab doubles down on marine booster recovery with next Electron launch"
+            description="Rocket Lab's next Electron mission will include another marine recovery attempt of the rocket's booster, the latest step by the company to advance its reusability program."
+            category="Space"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <bigCard
+            imageUrl="https://techcrunch.com/wp-content/uploads/2023/06/reddit-logo-broken.jpg?w=1390&crop=1"
+            author="Ivan Mehta"
+            publishDate="June 22, 2023"
+            title="Reddit is battling moderators marking their communities NSFW"
+            description="After adopting different forms of protest like exclusively posting John Oliver pictures or changing the topic of the subreddit, moderators have rebelled against the company by marking their subreddits NSFW (Not Safe For Work)."
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <bigCard
+            imageUrl="https://techcrunch.com/wp-content/uploads/2021/03/ransomware-bryce.jpg?w=1390&crop=1"
+            author="Carly Page"
+            publishDate="June 16, 2023"
+            title="US confirms federal agencies hit by MOVEit breach, as hackers list more victims"
+            description="The U.S. government has confirmed that multiple federal agencies have fallen victim to cyberattacks exploiting a security vulnerability in a popular file transfer tool."
+          />
+        </SwiperSlide>
+      </Swiper>
 
       <div class="flex flex-col gap-5 pb-fluid-gap-section">
         <!-- Header -->
@@ -61,21 +88,8 @@
 </template>
 
 <script setup>
-// const { data, error } = useAsyncData(async () => {
-//   try {
-//     const response = await fetch("http://localhost:8000/api/blogs");
-//     const responseData = await response.json();
-//     const document = responseData.docs;
-
-//     document.forEach((document) => console.log(document.title));
-//   } catch (err) {
-//     console.error(err);
-//     // throw err;
-//   }
-
-//   return {
-//     data,
-//     error,
-//   };
-// });
+useHead({
+  title: "Home",
+  meta: [{ name: "description", content: "Home Page" }],
+});
 </script>
