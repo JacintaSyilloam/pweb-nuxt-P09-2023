@@ -26,7 +26,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@fortawesome/vue-fontawesome"],
   },
-  generate: {
-    routes: ["/blog"],
+  nitro: {
+    prerender: {
+      routes: ["/blog"],
+    },
   },
 });
