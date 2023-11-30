@@ -5,7 +5,7 @@ import payload from 'payload';
 const Media = {
     slug: 'media',
     admin: {
-        useAsTitle: 'url',
+        useAsTitle: 'alt',
     },
     labels: {
         singular: 'Media',
