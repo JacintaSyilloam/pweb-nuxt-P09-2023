@@ -51,18 +51,16 @@
                   Redirect to Another Page
                 </HeadlessDialogTitle>
                 <div class="mt-2">
-                  <p class="text-sm text-neutral-400">
-                    Yakin mau ke halaman blog?
-                  </p>
+                  <p class="text-sm text-neutral-400">Are you sure?</p>
                 </div>
 
                 <div class="mt-4 flex gap-2">
-                  <NuxtLink to="/blog">
+                  <NuxtLink to="/blogs">
                     <button
                       type="button"
                       class="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 duration-500 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     >
-                      Letss gooo! 🚗🏍️🛵🚃
+                      Letss go! 🚗
                     </button>
                   </NuxtLink>
                   <button
@@ -70,7 +68,7 @@
                     class="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 duration-500 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     @click="closeModal"
                   >
-                    Malazh :v 🤓🤣😶‍🌫️🫠
+                    Malazh 🤓
                   </button>
                 </div>
               </HeadlessDialogPanel>

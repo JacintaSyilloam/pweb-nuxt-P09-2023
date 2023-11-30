@@ -9,10 +9,10 @@
           <h2 class="font-roboto text-base font-medium text-neutral-400">
             {{ author }}
           </h2>
-          <!-- <font-awesome-icon icon="circle" class="text-mini text-neutral-400" />
+          <font-awesome-icon icon="circle" class="text-mini text-neutral-400" />
           <h2 class="font-roboto text-base font-medium text-neutral-400">
             {{ publishDate }}
-          </h2> -->
+          </h2>
         </div>
 
         <h1
@@ -34,7 +34,7 @@ export default {
   props: {
     imageUrl: String,
     author: String,
-    // publishDate: String,
+    publishDate: String,
     title: String,
     description: String,
   },

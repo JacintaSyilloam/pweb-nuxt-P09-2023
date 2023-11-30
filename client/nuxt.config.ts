@@ -31,4 +31,7 @@ export default defineNuxtConfig({
       routes: ["/blog"],
     },
   },
+  routeRules: {
+    "/": { ssr: false },
+  },
 });

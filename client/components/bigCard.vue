@@ -20,7 +20,7 @@
           >
             {{ author }}
           </h2>
-          <!-- <font-awesome-icon
+          <font-awesome-icon
             icon="circle"
             class="text-fluid-headerCard-dot text-neutral-400"
           />
@@ -28,7 +28,7 @@
             class="font-roboto text-fluid-headerCard-title font-medium leading-tight text-neutral-400"
           >
             {{ publishDate }}
-          </h2> -->
+          </h2>
         </div>
 
         <h1

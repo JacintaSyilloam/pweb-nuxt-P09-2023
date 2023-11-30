@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <header>
     <nav
       class="fixed z-50 w-full items-center justify-center border-b border-neutral-700 bg-neutral-900"
     >
@@ -36,7 +36,10 @@
         </ul>
       </div>
     </nav>
-  </main>
+  </header>
+  <div>
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -47,7 +50,7 @@ export default {
     let openNav = ref(false);
     let navigation = [
       { name: "Home", route: "/" },
-      { name: "Blog", route: "/blog" },
+      { name: "Blogs", route: "/blogs" },
       { name: "About", route: "/about" },
     ];
 

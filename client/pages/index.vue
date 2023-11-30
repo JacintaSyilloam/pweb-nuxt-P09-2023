@@ -7,13 +7,16 @@
         :loop="true"
         :autoplay="{ delay: 2000 }"
       >
-        <SwiperSlide v-for="blog in blogs.slice(0, 4)" :key="blog.id">
-          <bigCard
-            :imageUrl="blog.media.url"
-            :author="blog.author"
-            :title="blog.title"
-            :description="blog.content"
-          />
+        <SwiperSlide v-for="blog in blogs.slice(3, 8)" :key="blog.id">
+          <NuxtLink :to="`/blogs/${blog.id}`">
+            <bigCard
+              :imageUrl="blog.media.url"
+              :author="blog.author"
+              :title="blog.title"
+              :description="blog.content"
+              :publishDate="formatDate(blog.date)"
+            />
+          </NuxtLink>
         </SwiperSlide>
       </Swiper>
 
@@ -31,14 +34,15 @@
         <div
           class="grid grid-cols-1 gap-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4"
         >
-          <smallCard
-            v-for="blog in blogs.slice(5, 9)"
-            :imageUrl="blog.media.url"
-            :key="blog.id"
-            :author="blog.author"
-            :title="blog.title"
-            :description="blog.content"
-          />
+          <NuxtLink :to="`/blogs/${blog.id}`" v-for="blog in blogs.slice(4, 8)"
+            ><smallCard
+              :imageUrl="blog.media.url"
+              :key="blog.id"
+              :author="blog.author"
+              :title="blog.title"
+              :description="blog.content"
+              :publishDate="formatDate(blog.date)"
+          /></NuxtLink>
         </div>
       </div>
     </section>
@@ -46,18 +50,28 @@
 </template>
 
 <script setup>
+import { format } from "date-fns";
+
 useHead({
   title: "Home",
   meta: [{ name: "description", content: "Home Page" }],
 });
 
-// Client Side Rendering (CSR)
-
 const blogs = ref([]);
+const dates = ref([]);
+
+const formatDate = (date) => {
+  return format(new Date(date), "MMM dd, yyyy");
+};
 
 onMounted(async () => {
-  const response = await fetch("http://localhost:8000/api/blogs");
-  const data = await response.json();
-  blogs.value = data.docs;
+  try {
+    const response = await fetch("http://localhost:8000/api/blogs");
+    const data = await response.json();
+    blogs.value = data.docs;
+    dates.value = data.docs.map((blog) => formatDate(blog.date));
+  } catch (error) {
+    console.error("Error while fetching data: ", error);
+  }
 });
 </script>
