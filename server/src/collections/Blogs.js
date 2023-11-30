@@ -35,11 +35,25 @@ const Blogs = {
       relationTo: "media",
       label: "Media",
     },
+    {
+      name: "date",
+      type: "date",
+      admin: {
+        date: {
+          pickerAppearance: "dayOnly",
+          displayFormat: "MMM dd, yyyy"
+        }
+      },
+      label: "Published Date",
+    }
   ],
   hooks: {
     afterOperation: [
       async (args) => {
+        // console.log("[DEBUG args]" + args);
         if (args.operation == "create") {
+          // console.log("[DEBUG args.result.title]" + args.result.title);
+
           payload.create({
             collection: "log",
             data: {
@@ -50,6 +64,8 @@ const Blogs = {
             },
           });
         } else if (args.operation == "updateByID") {
+          // console.log("[DEBUG args.result.title]" + args.result.title);
+
           payload.create({
             collection: "log",
             data: {
@@ -60,6 +76,8 @@ const Blogs = {
             },
           });
         } else if (args.operation == "deleteByID") {
+          // console.log("[DEBUG args.result.title]" + args.result.title);
+
           payload.create({
             collection: "log",
             data: {
@@ -85,5 +103,6 @@ const Blogs = {
     ],
   },
 };
+
 
 export default Blogs;
