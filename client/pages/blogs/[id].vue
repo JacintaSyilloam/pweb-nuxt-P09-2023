@@ -28,7 +28,7 @@
             <h2
               class="font-roboto text-fluid-headerCard-title font-medium leading-tight text-neutral-400"
             >
-              June 16, 2023
+              {{ formatDate(blog.date) }}
             </h2>
           </div>
         </div>
@@ -70,9 +70,15 @@
 </template>
 
 <script setup>
+import { format } from "date-fns";
+
 const { id } = useRoute().params;
 
 const uri = "http://localhost:8000/api/blogs/" + id;
 
 const { data: blog } = await useFetch(uri);
+
+const formatDate = (date) => {
+  return format(new Date(date), "MMM dd, yyyy");
+};
 </script>
