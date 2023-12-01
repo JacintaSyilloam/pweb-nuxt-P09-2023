@@ -22,11 +22,19 @@
 
       <div class="flex flex-col gap-5 pb-fluid-gap-section">
         <div class="flex flex-row items-center justify-between">
-          <h1
-            class="font-roboto text-fluid-landingPage-header font-semibold leading-none text-neutral-200"
-          >
-            Latest Article
-          </h1>
+          <div>
+            <h1
+              class="font-roboto text-fluid-landingPage-header font-semibold leading-none text-neutral-200"
+            >
+              Latest Article
+            </h1>
+            <div
+              v-if="blogs == null"
+              class="font-roboto text-fluid-landingPage-header font-semibold leading-none text-green-500"
+            >
+              Fetching data on client ...
+            </div>
+          </div>
           <redirectModal />
         </div>
 

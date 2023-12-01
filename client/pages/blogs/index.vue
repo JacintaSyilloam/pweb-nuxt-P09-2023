@@ -8,17 +8,28 @@
           Latest Article
         </h1>
       </div>
+      <div class="h-screen pt-4" v-if="blogs == null">
+        <h1
+          class="font-roboto text-fluid-landingPage-header font-semibold leading-none text-green-500"
+        >
+          Fetching data on client ...
+        </h1>
+      </div>
       <div
         class="grid grid-cols-1 gap-10 pb-8 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4"
       >
-        <NuxtLink v-for="blog in blogs" :to="`/blogs/${blog.id}`">
+        <NuxtLink
+          v-for="(blog, idx) in blogs"
+          :key="idx"
+          :to="`/blogs/${blog.id}`"
+        >
           <smallCard
             :imageUrl="blog.media.url"
             :key="blog.id"
             :author="blog.author"
             :title="blog.title"
             :description="blog.content"
-            :publishDate="formatDate(blog.date)"
+            :publishDate="blog.formattedDate"
           />
         </NuxtLink>
       </div>
@@ -29,27 +40,18 @@
 <script setup>
 import { format } from "date-fns";
 
-useHead({
-  title: "Home",
-  meta: [{ name: "description", content: "Home Page" }],
-});
+const blogs = ref(null);
 
-const formatDate = (date) => {
-  return format(new Date(date), "MMM dd, yyyy");
-};
-
-const { data: response } = await useFetch(
-  "http://localhost:8000/api/blogs?limit=30",
-);
-
-if (!response.value) {
-  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
-}
-
-const blogs = response.value.docs.map((blog) => {
-  return {
-    ...blog,
-    formattedDate: formatDate(blog.date),
-  };
+onMounted(async () => {
+  try {
+    const response = await fetch("http://localhost:8000/api/blogs?limit=30");
+    const data = await response.json();
+    blogs.value = data.docs.map((blog) => ({
+      ...blog,
+      formattedDate: format(new Date(blog.date), "MMM dd, yyyy"),
+    }));
+  } catch (error) {
+    console.error("Error while fetching data: ", error);
+  }
 });
 </script>

@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/google-fonts", "nuxt-headlessui", "nuxt-swiper"],
   nitro: {
     prerender: {
-      routes: ["/blogs"],
+      routes: ["/"],
     },
   },
   postcss: {
@@ -33,6 +33,6 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/": { ssr: false },
+    "/blogs": { ssr: false },
   },
 });
