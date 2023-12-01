@@ -28,31 +28,28 @@
 
 <script setup>
 import { format } from "date-fns";
-import axios from "axios";
 
 useHead({
   title: "Home",
   meta: [{ name: "description", content: "Home Page" }],
 });
 
-const blogs = ref([]);
-const dates = ref([]);
-
 const formatDate = (date) => {
   return format(new Date(date), "MMM dd, yyyy");
 };
 
-onMounted(async () => {
-  const response = await fetch("http://localhost:8000/api/blogs?limit=30");
-  const data = await response.json();
-  blogs.value = data.docs;
-  dates.value = data.docs.map((blog) => formatDate(blog.date));
+const { data: response } = await useFetch(
+  "http://localhost:8000/api/blogs?limit=30",
+);
 
-  if (!data.value) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: "Error while data fetching!",
-    });
-  }
+if (!response.value) {
+  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
+}
+
+const blogs = response.value.docs.map((blog) => {
+  return {
+    ...blog,
+    formattedDate: formatDate(blog.date),
+  };
 });
 </script>

@@ -49,24 +49,27 @@
 </template>
 
 <script setup>
-import axios from "axios";
 import { format } from "date-fns";
 
-const { data } = await useAsyncData(async () => {
-  const res = await axios.get("http://localhost:8000/api/blogs");
-  return res.data;
+useHead({
+  title: "Home",
+  meta: [{ name: "description", content: "Home Page" }],
 });
-
-if (!data.value) {
-  throw createError({
-    statusCode: 400,
-    statusMessage: "Error while data fetching!",
-  });
-}
-
-const blogs = data._rawValue.docs;
 
 const formatDate = (date) => {
   return format(new Date(date), "MMM dd, yyyy");
 };
+
+const { data: response } = await useFetch("http://localhost:8000/api/blogs");
+
+if (!response.value) {
+  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
+}
+
+const blogs = response.value.docs.map((blog) => {
+  return {
+    ...blog,
+    formattedDate: formatDate(blog.date),
+  };
+});
 </script>

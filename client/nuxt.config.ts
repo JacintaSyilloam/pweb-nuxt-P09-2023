@@ -7,6 +7,7 @@ export default defineNuxtConfig({
         { name: "description", content: "Just a simple blog made with NuxtJS" },
       ],
     },
+    pageTransition: { name: "page", mode: "out-in" },
   },
   build: {
     transpile: ["@fortawesome/vue-fontawesome"],

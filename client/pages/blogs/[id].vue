@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="h-auto bg-neutral-900 pt-16">
+    <div class="h-auto max-h-full bg-neutral-900 pt-[72px]">
       <img
         :src="blog.media.url"
         alt="image"
