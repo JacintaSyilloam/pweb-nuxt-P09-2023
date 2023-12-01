@@ -28,6 +28,7 @@
 
 <script setup>
 import { format } from "date-fns";
+import axios from "axios";
 
 useHead({
   title: "Home",
@@ -42,13 +43,16 @@ const formatDate = (date) => {
 };
 
 onMounted(async () => {
-  try {
-    const response = await fetch("http://localhost:8000/api/blogs?limit=30");
-    const data = await response.json();
-    blogs.value = data.docs;
-    dates.value = data.docs.map((blog) => formatDate(blog.date));
-  } catch (error) {
-    console.error("Error while fetching data: ", error);
+  const response = await fetch("http://localhost:8000/api/blogs?limit=30");
+  const data = await response.json();
+  blogs.value = data.docs;
+  dates.value = data.docs.map((blog) => formatDate(blog.date));
+
+  if (!data.value) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Error while data fetching!",
+    });
   }
 });
 </script>

@@ -74,9 +74,11 @@ import { format } from "date-fns";
 
 const { id } = useRoute().params;
 
-const uri = "http://localhost:8000/api/blogs/" + id;
+const { data: blog } = await useFetch(`http://localhost:8000/api/blogs/${id}`);
 
-const { data: blog } = await useFetch(uri);
+if (!blog.value) {
+  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
+}
 
 const formatDate = (date) => {
   return format(new Date(date), "MMM dd, yyyy");

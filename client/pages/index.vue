@@ -21,7 +21,6 @@
       </Swiper>
 
       <div class="flex flex-col gap-5 pb-fluid-gap-section">
-        <!-- Header -->
         <div class="flex flex-row items-center justify-between">
           <h1
             class="font-roboto text-fluid-landingPage-header font-semibold leading-none text-neutral-200"
@@ -50,28 +49,24 @@
 </template>
 
 <script setup>
+import axios from "axios";
 import { format } from "date-fns";
 
-useHead({
-  title: "Home",
-  meta: [{ name: "description", content: "Home Page" }],
+const { data } = await useAsyncData(async () => {
+  const res = await axios.get("http://localhost:8000/api/blogs");
+  return res.data;
 });
 
-const blogs = ref([]);
-const dates = ref([]);
+if (!data.value) {
+  throw createError({
+    statusCode: 400,
+    statusMessage: "Error while data fetching!",
+  });
+}
+
+const blogs = data._rawValue.docs;
 
 const formatDate = (date) => {
   return format(new Date(date), "MMM dd, yyyy");
 };
-
-onMounted(async () => {
-  try {
-    const response = await fetch("http://localhost:8000/api/blogs");
-    const data = await response.json();
-    blogs.value = data.docs;
-    dates.value = data.docs.map((blog) => formatDate(blog.date));
-  } catch (error) {
-    console.error("Error while fetching data: ", error);
-  }
-});
 </script>

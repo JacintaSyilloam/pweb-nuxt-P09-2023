@@ -1,5 +1,5 @@
 To Do List FE:
-- SSG (Static Site Generation) Data Fetch
+- SSG (Static Site Generation) Data Fetch ✅
 - CSR (maybe)
 - State Management
 - Error Handling (based on data fetching)
