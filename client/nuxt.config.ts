@@ -20,7 +20,15 @@ export default defineNuxtConfig({
       Lora: [400, 500, 600, 700],
     },
   },
-  modules: ["@nuxtjs/google-fonts", "nuxt-headlessui", "nuxt-swiper"],
+  imports: {
+    dirs: ["store"],
+  },
+  modules: [
+    ["@pinia/nuxt", { autoImports: ["defineStore", "acceptHMRUpdate"] }],
+    "@nuxtjs/google-fonts",
+    "nuxt-headlessui",
+    "nuxt-swiper",
+  ],
   nitro: {
     prerender: {
       routes: ["/"],

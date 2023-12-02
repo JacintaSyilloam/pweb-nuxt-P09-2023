@@ -35,7 +35,16 @@
               Fetching data on client ...
             </div>
           </div>
-          <redirectModal />
+          <redirectModal
+            name="See all"
+            title="You will redirect to Blogs page"
+            desc="Are you sure?"
+            route="/blogs"
+            move="Letss go! 🚗"
+            stay="Malazh 🤓"
+            iconPosition="right"
+            iconModel="fa-solid fa-arrow-right"
+          />
         </div>
 
         <div
@@ -58,10 +67,17 @@
 
 <script setup>
 import { format } from "date-fns";
+import { Swiper, SwiperSlide, SwiperAutoplay } from "swiper/vue";
 
 useHead({
   title: "Home",
   meta: [{ name: "description", content: "Home Page" }],
+});
+
+definePageMeta({
+  pageTransition: {
+    name: "home",
+  },
 });
 
 const formatDate = (date) => {

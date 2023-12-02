@@ -38,31 +38,17 @@
         >
           {{ blog.content }}
         </p>
-        <div class="flex items-center justify-center gap-8 pb-16">
-          <NuxtLink to="/">
-            <button
-              type="button"
-              class="text-fluid-header-title cursor-pointer items-center rounded-lg px-4 py-3 font-roboto font-semibold leading-tight text-green-500 duration-500 hover:bg-neutral-800"
-            >
-              <font-awesome-icon
-                icon="fa-solid fa-house"
-                class="text-fluid-header-title pr-2 font-semibold leading-tight text-green-500"
-              />
-              Back to Home
-            </button>
-          </NuxtLink>
-          <NuxtLink to="/blogs">
-            <button
-              type="button"
-              class="text-fluid-header-title cursor-pointer items-center rounded-lg px-4 py-3 font-roboto font-semibold leading-tight text-green-500 duration-500 hover:bg-neutral-800"
-            >
-              <font-awesome-icon
-                icon="fa-solid fa-folder"
-                class="text-fluid-header-title pr-2 font-semibold leading-tight text-green-500"
-              />
-              Back to Blogs
-            </button>
-          </NuxtLink>
+        <div class="flex items-center justify-center pb-16">
+          <redirectModal
+            name="Back to Blogs"
+            title="You will redirect to Blogs page"
+            desc="Are you sure?"
+            route="/blogs"
+            move="Letss go! 🚗"
+            stay="Gajadi 🤓"
+            iconPosition="left"
+            iconModel="fa-solid fa-folder"
+          />
         </div>
       </div>
     </div>

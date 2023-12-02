@@ -1,20 +1,33 @@
 <template>
   <div>
     <button
+      v-if="iconPosition === 'left'"
       type="button"
       @click="openModal"
       class="text-fluid-header-title cursor-pointer items-center rounded-lg px-4 py-3 font-roboto font-semibold leading-tight text-green-500 duration-500 hover:bg-neutral-800"
     >
-      See all
       <font-awesome-icon
-        icon="fa-solid fa-arrow-right"
+        :icon="iconModel"
+        class="text-fluid-header-title pr-2 font-semibold leading-tight text-green-500"
+      />
+      {{ name }}
+    </button>
+    <button
+      v-if="iconPosition === 'right'"
+      type="button"
+      @click="openModal"
+      class="text-fluid-header-title cursor-pointer items-center rounded-lg px-4 py-3 font-roboto font-semibold leading-tight text-green-500 duration-500 hover:bg-neutral-800"
+    >
+      {{ name }}
+      <font-awesome-icon
+        :icon="iconModel"
         class="text-fluid-header-title pl-2 font-semibold leading-tight text-green-500"
       />
     </button>
   </div>
 
   <ClientOnly>
-    <HeadlessTransitionRoot appear :show="isOpen" as="template">
+    <HeadlessTransitionRoot appear :show="modalStore.isOpen" as="template">
       <HeadlessDialog as="div" @close="closeModal" class="relative z-10">
         <HeadlessTransitionChild
           as="template"
@@ -48,19 +61,19 @@
                   as="h3"
                   class="text-lg font-medium leading-6 text-neutral-50"
                 >
-                  Redirect to Another Page
+                  {{ title }}
                 </HeadlessDialogTitle>
                 <div class="mt-2">
-                  <p class="text-sm text-neutral-400">Are you sure?</p>
+                  <p class="text-sm text-neutral-400">{{ desc }}</p>
                 </div>
 
                 <div class="mt-4 flex gap-2">
-                  <NuxtLink to="/blogs">
+                  <NuxtLink :to="route">
                     <button
                       type="button"
                       class="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 duration-500 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     >
-                      Letss go! 🚗
+                      {{ move }}
                     </button>
                   </NuxtLink>
                   <button
@@ -68,7 +81,7 @@
                     class="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 duration-500 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     @click="closeModal"
                   >
-                    Malazh 🤓
+                    {{ stay }}
                   </button>
                 </div>
               </HeadlessDialogPanel>
@@ -81,21 +94,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import {
-  TransitionRoot,
-  TransitionChild,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from "@headlessui/vue";
+const modalStore = useModalStore();
 
-const isOpen = ref(false);
+onMounted(() => {
+  modalStore.$reset();
+});
 
-function closeModal() {
-  isOpen.value = false;
-}
-function openModal() {
-  isOpen.value = true;
-}
+const closeModal = modalStore.closeModal;
+const openModal = modalStore.openModal;
+
+let props = defineProps({
+  name: String,
+  title: String,
+  desc: String,
+  route: String,
+  move: String,
+  stay: String,
+  iconPosition: String,
+  iconModel: String,
+});
 </script>
