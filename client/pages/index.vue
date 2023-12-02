@@ -67,7 +67,6 @@
 
 <script setup>
 import { format } from "date-fns";
-import { Swiper, SwiperSlide, SwiperAutoplay } from "swiper/vue";
 
 useHead({
   title: "Home",
